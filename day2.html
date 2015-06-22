@@ -25,13 +25,46 @@
             </div>
             <div class="col-md-9 concepts">
                 <ul>
+                    <li>alert / confirm / prompt</li>
                     <li>Skill Builder</li>
                     <li>Symantics in the syntax</li>
                     <li>Operators</li>
                     <li>Math</li>
-                    <li>Control Flow</li>
                     <li></li>
                 </ul>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Alert / Confirm / Prompt</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="refresh">
+                    We will get much deeper into functions in the following class sessions, but for now, understand
+                    a function is nothing more than some grouped javascript behavior that performs a
+                    specific actions.  You <code>call</code> a function.  It <code>return</code>s a value.
+                </div>
+                <div class="point"><code>alert()</code> and <code>confirm()</code> and <code>prompt()</code> can all be used to convey / solicit information from a user</div>
+                <div class="point"><code>alert()</code> is a read only type of deal</div>
+                <div class="point"><code>confirm()</code> will return bool depending on the button the user clicked.</div>
+                <div class="point"><code>prompt()</code> will allow you to ask the user for input, and then use it in your script.</div>
+                <div class="point">All three functions stop the execution of the javascript until some action takes place.</div>
+                <div class="point">
+                    <div class="exampleLeadin">Some Examples</div>
+                    <pre>
+                        <code class="language-javascript">
+//tell the user something
+alert("Ah, hi there, I'll wait here till you close me");
+
+//confirm a users action
+confirm("Sure you want to do that...?");
+
+//ask the user for input
+prompt("What is your name?");
+                        </code>
+                    </pre>
+                </div>
             </div>
         </div>
 
@@ -264,181 +297,6 @@ console.log(isNaN(b)); //true
 
         </div>
 
-
-        <div class="row">
-            <div class="col-md-3">
-                <h2 class="text-right">Control Flow</h2>
-            </div>
-            <div class="col-md-9">
-                <div class="point">Control flow simply means controlling what code actually gets executed in your program.</div>
-                <div class="point">
-                    It's very common that your application will want to behave differently based on available data.  One
-                    common scenario is a login / authentication strategy.  If you build an application where you want to
-                    require the users logs in, you'll want to show a login screen if they aren't logged in, or redirect
-                    them to their home page if they are.
-                </div>
-                <div class="point">The kinds of control flow we are going to look at today:
-                    <ul class="list">
-                        <li><code>if</code></li>
-                        <li><code>if / else</code></li>
-                        <li><code>if / elseif</code></li>
-                        <li><code>if / elseif / else</code></li>
-                        <li><code>switch</code></li>
-                        <li>ternary</li>
-                    </ul>
-                    In almost all cases, the control flow will evaluate some condition, and react accordingly.  This
-                    enables us to run some code, while skipping other parts.
-                </div>
-                <div class="point">The most basic form of control flow are <code>if</code> / <code>else</code> statements.</div>
-<pre>
-    <code class="language-javascript">
-//simple if statement
-if (true) {
-
-    console.log("yup");
-
-}
-
-//if / else, if the first condition is true, run the first
-//block, else run the second block
-if (false) {
-
-    alert("it's true");
-
-} else {
-
-    alert("it's false");
-
-}
-
-//if else if statments, the last else is our "fallback"
-if (condition1) {
-
-
-} else if (condition2) {
-
-
-} else {
-
-
-}
-    </code>
-</pre>
-                <div class="point">
-                    With <code>if</code> statements, it's possible to evaluate multiple conditions, and we use logical
-                    operators to do so.  This lets us say "If this <code>AND</code> that is true, then run this code.
-                    <ul class="list">
-                        <li><code>&&</code> the and operator</li>
-                        <li><code>||</code> the or operator</li>
-                    </ul>
-                </div>
-
-                <pre><code class="language-javascript">
-var a = true;
-var b = false;
-
-//if both a AND b are true...
-if (a && b) {
-    console.log("both a and b are truthy");
-} else {
-    console.log("one of a or b are false");
-}
-
-//if a OR b is true
-if (a || b) {
-    console.log("one of a or b are true");
-}
-                </code></pre>
-
-                <div class="point">
-                    Another common control flow element is the <code>switch</code> statement.  Switch will evaluate the
-                    condition and then perform a given block of code based on that value.  It looks like:
-                </div>
-
-<pre><code class="language-javascript">
-var condition = "foo";
-
-switch (condition) {
-case "foo":
-    alert("foo");
-    break;
-case "bar":
-    alert("bar");
-    break;
-default:
-    alert("wasn't foo or bar");
-}
-</code></pre>
-
-                <div class="point">
-                    Careful with Switch statements however, they can lead to some unwanted results if you forget the
-                    <code>break</code> keyword called "fall-through" or "pass-through". What happens when you run the
-                    switch statement and omit the break in the "foo" case?
-                </div>
-
-<pre><code class="language-javascript">
-var condition = "foo";
-
-switch (condition) {
-case "foo":
-    alert("foo");
-case "bar":
-    alert("bar");
-    break;
-default:
-    alert("wasn't foo or bar");
-}
-</code></pre>
-
-                <div class="point">
-                    Ternary operators are a short hand if / else type of control flow.
-                </div>
-                <div class="point">
-                    They use the <code>?</code> and the <code>:</code> as the syntax.
-                </div>
-                <div class="point">
-                    It looks like: <code class="language-javascript">condition ? trueValue : falseValue;</code>
-                </div>
-                <pre><code class="language-javascript">
-var loggedIn = true;
-var needsLogin = loggedIn ? false : true;
-
-var age = 31;
-var logout = age < 13 ? true : false;
-                </code></pre>
-
-                <div class="point">Ternary operators are great for simply quick conditions where the evaluates are simple</div>
-                <div class="point">Avoid nested ternary</div>
-                <pre><code class="language-javascript">
-var dogs = false
-var cats = false;
-var fish = true;
-var hasPets = dogs ? true : cats ? true : fish ? true : false; //wat?
-                </code></pre>
-
-                <div class="point">Just because you can do something, doesn't mean you should.  Just because you have
-                a hammer, not everything is a nail.</div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3"><h2 class="text-right">Operators & Conditions in Practice</h2></div>
-            <div class="col-md-9">
-                <div class="point">
-                    <h4>Who's practiced more?</h4>
-                    <div class="problem">
-                        Jules has been writing javascript for 4 years.  She spends 4 hours every day writing javascript.
-                        Hallie has been writing javascript for 6 years, but only spends about 2.5 hours a day coding.
-                    </div>
-                    <div class="problem">
-                        Write some code that will determine the total number of hours each have spent coding.  Then using
-                        some control flow log the name (Jules or Hallie) that has had the most time at the keyboard.
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-md-3">
                 <h2 class="text-right">Take Home Assignment</h2>
@@ -450,10 +308,7 @@ var hasPets = dogs ? true : cats ? true : fish ? true : false; //wat?
                         <li>Prompt for a number value (provide a default of 10)</li>
                         <li>Prompt for another number value (provide a default of 10)</li>
                         <li>Convert the promped values into integers.</li>
-                        <li>Make sure that the input from steps 1 and 2 are numbers.</li>
-                        <li>If they are numbers, add the numbers together and log the value to the console.</li>
-                        <li>If either of the prompted values are not numbers, alert someting to the user that they
-                            must input nubmers only.</li>
+                        <li>add the numbers together and alert the user with the outcome.</li>
                     </ol>
                 </div>
             </div>
