@@ -39,13 +39,13 @@
             </div>
             <div class="col-md-9">
                 <div class="point">
-                    Write a small js program that will (chrome snippet is fine):
+                    Write a small js program that will: (chrome snippet is fine)
 
                     <ul class="list">
                         <li>Prompt for two numbers</li>
                         <li>Store them into variables</li>
                         <li>Parse the values into numbers (parseInt)</li>
-                        <li>Multiply the two numbwers and alert the result</li>
+                        <li>Multiply the two numbers and alert the result</li>
                         <li>Divide the two numbers and alert the result</li>
                     </ul>
                 </div>
@@ -60,16 +60,16 @@
                 <div class="point">Control flow simply means controlling what code actually gets executed in your program.</div>
                 <div class="point">
                     It's very common that your application will want to behave differently based on available data.  One
-                    common scenario is a login / authentication strategy.  If you build an application where you want to
-                    require the users logs in, you'll want to show a login screen if they aren't logged in, or redirect
+                    common scenario is a login/authentication strategy.  If you build an application where you want to
+                    require the user to log in, you'll want to show a login screen if they aren't logged in, or redirect
                     them to their home page if they are.
                 </div>
                 <div class="point">The kinds of control flow we are going to look at today:
                     <ul class="list">
                         <li><code>if</code></li>
-                        <li><code>if / else</code></li>
-                        <li><code>if / elseif</code></li>
-                        <li><code>if / elseif / else</code></li>
+                        <li><code>if else</code></li>
+                        <li><code>if else if</code></li>
+                        <li><code>if else if else</code></li>
                         <li><code>switch</code></li>
                         <li>ternary</li>
                     </ul>
@@ -96,7 +96,7 @@ if (true) {
 
 <pre>
     <code class="language-javascript">
-//if / else, if the first condition is true, run the first
+//if else, if the first condition is true, run the first
 //block, else run the second block
 if (false) {
 
@@ -111,7 +111,7 @@ if (false) {
 </pre>
                 <div class="point">
                     <div class="excercise">
-                        Try it: Using the code from earlier, add anf else statement alerting all those older 
+                        Try it: Using the code from earlier, add an if else statement alerting all those older 
                         than 18 with anything you like.
                     </div>
                 </div>
@@ -133,14 +133,14 @@ if (condition1) {
 </pre>
                 <div class="point">
                     <div class="excercise">
-                        Try it: Once more, alter the code and add an els if that checks if the user is between 18 
+                        Try it: Once more, alter the code and add an else if that checks if the user is between 18 
                         and 50. In each section alert the user with something different.
                     </div>
                 </div>
 
                 <div class="point">
                     With <code>if</code> statements, it's possible to evaluate multiple conditions, and we use logical
-                    operators to do so.  This lets us say "If this <code>AND</code> that is true, then run this code.
+                    operators to do so.  This lets us say, "If this <code>AND</code> that are true, then run this code."
                     <ul class="list">
                         <li><code>&&</code> the and operator</li>
                         <li><code>||</code> the or operator</li>
@@ -153,7 +153,7 @@ var b = false;
 
 //if both a AND b are true...
 if (a && b) {
-    console.log("both a and b are truthy");
+    console.log("both a and b are true");
 } else {
     console.log("one of a or b are false");
 }
@@ -194,7 +194,7 @@ default:
 
                 <div class="point">
                     <div class="excercise">
-                        Try it: Finally, using only the age variable, refactor your code to use a switch statemtnt instead of an if 
+                        Try it: Finally, using only the age variable, refactor your code to use a switch statement instead of an if 
                         statement.
                         <br>
                         <br>
@@ -223,7 +223,7 @@ default:
 </code></pre>
 
                 <div class="point">
-                    Ternary operators are a short hand if / else type of control flow.
+                    Ternary operators are a short hand if else type of control flow.
                 </div>
                 <div class="point">
                     They use the <code>?</code> and the <code>:</code> as the syntax.
@@ -239,7 +239,7 @@ var age = 31;
 var logout = age < 13 ? true : false;
                 </code></pre>
 
-                <div class="point">Ternary operators are great for simply quick conditions where the evaluates are simple</div>
+                <div class="point">Ternary operators are great for simple situations where the conditonal statement can be boiled down to a yes or no answer.</div>
                 <div class="point">Avoid nested ternary</div>
                 <pre><code class="language-javascript">
 var dogs = false
@@ -248,8 +248,9 @@ var fish = true;
 var hasPets = dogs ? true : cats ? true : fish ? true : false; //wat?
                 </code></pre>
 
-                <div class="point">Just because you can do something, doesn't mean you should.  Just because you have
-                a hammer, not everything is a nail.</div>
+                <div class="point">Just because you can do something, doesn't mean you should...
+                <br>
+                Just because you have a hammer, not everything is a nail.</div>
 
             </div>
         </div>
@@ -263,6 +264,7 @@ var hasPets = dogs ? true : cats ? true : fish ? true : false; //wat?
                         Jules has been writing javascript for 4 years.  She spends 4 hours every day writing javascript.
                         Hallie has been writing javascript for 6 years, but only spends about 2.5 hours a day coding.
                     </div>
+                    <br>
                     <div class="problem">
                         Write some code that will determine the total number of hours each have spent coding.  Then using
                         some control flow log the name (Jules or Hallie) that has had the most time at the keyboard.
