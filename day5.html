@@ -38,19 +38,6 @@
         </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-md-3">
-            <h2 class="text-right">Review Take Home</h2>
-        </div>
-        <div class="col-md-9">
-<pre>
-    <code class="language-javascript">
-    </code>
-</pre>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-right">Skill Builder</h2>
@@ -60,9 +47,13 @@
                  Write a js program that will:
 
                 <ul class="list">
-                    <li>
-                        
-                    </li>
+                    <li>Create and array containing 5 of your favorite movies.</li>
+                    <li>Create a second array that holds the second and third movies in the previous array.</li>
+                    <li>Remove the fourth item and replace it with any other movie you would like.</li>
+                    <li>Prompt the user for a movie title.</li>
+                    <li>Check if the title is already in the array.</li>
+                    <li>If it is not add the movie to the array.</li>
+                    <li>Log the items in the array.</li>
                 </ul>
             </div>
         </div>
@@ -233,7 +224,7 @@ log("the fox jumps over the lazy dog");
 
 <pre>
     <code class="language-javascript">
-var name = "greg";
+var name = "Adam";
 var capped = name.capitalize();
 
 console.log(capped);
@@ -255,7 +246,7 @@ console.log(capped);
 
             <div class="point">
                 While js does not provide a way of capitalizing the first letter of a string, it does provide a way to
-                upper case an entire string. It looks like <code>"greg".toUpperCase()</code>.
+                upper case an entire string. It looks like <code>"adam".toUpperCase()</code>.
 
                 <div class="excercise">
                     Try it: Create a string (variable or directly inline) and use the toUpperCase function on it.  What
@@ -265,7 +256,7 @@ console.log(capped);
 
 <pre>
     <code class="language-javascript">
-console.log("greg".toUpperCase());
+console.log("adam".toUpperCase());
     </code>
 </pre>
 
@@ -287,7 +278,7 @@ console.log("greg".toUpperCase());
                 <div class="sidenote">
                     In javascript <strong>strings</strong> are <strong>not mutable</strong>.  This means that when you
                     take any action on a string, you're actually creating a new string.  So it's important to realize that
-                    since I can't actually change the string "greg" into "Greg", we can fake it by creating another string.
+                    since I can't actually change the string "adam" into "Adam", we can fake it by creating another string.
                 </div>
             </div>
 
@@ -342,7 +333,7 @@ function capitalize(str) {
 
 <pre>
     <code class="language-javascript">
-var name = "greg";
+var name = "adam";
 console.log(typeof name);
 console.log(typeof 3);
     </code>
@@ -372,247 +363,7 @@ function capitalize(str) {
                 It's often these "edge cases" that will bite you in the long run.  Always begin thinking about odd ways
                 someone might use your code and anticipate how you could handle it!
             </div>
-
-            <h3>The <code>arguments</code> keyword</h3>
-
-            <div class="point">
-                This is more of an advanced topic, but worth mentioning here.  Inside any javascript function, you will
-                have available to use an array like object called <code>arguments</code>.
-            </div>
-
-            <div class="point">
-                I say array like because it looks like an array, but is actually missing many of the functions arrays
-                have to work with.  However, it does contain a <code>length</code> property.
-            </div>
-
-            <div class="point">
-                Lets take a look at how the <code>arguments</code> variable works.
-
-                <div class="excercise">
-                    Try it: lets create a function that will add up all of the arguments we pass into it.  In all other
-                    cases we've looked at, you must map the arguments being passed into the function, to the function
-                    declaration itself, so the <code>arguments</code> variable will actually let us handle an arbitrary
-                    number of arguments.  This means we don't need to define the arguments in the function <strong>signature</strong>.
-                </div>
-            </div>
-
-<pre>
-    <code class="language-javascript">
-function adder() {
-    console.log(arguments);
-}
-    </code>
-</pre>
-
-            <div class="point">
-                Lets finish this function by making it add up all of the arguments we pass into it.  Anything non numberish
-                should be ignored.  For instance, if I call <code>adder(1, 2, "foo")</code>, the result should be 3.
-            </div>
-
-            <h3>Function Scope</h3>
-
-            <div class="point">Every js program runs with a "scope".  This can be thought of as the things that are
-            currently available to the execution of a program.  The main / base scope is referred to as the "global"
-            scope.</div>
-
-            <div class="point">
-                Creating a function in javascript creates a new scope
-            </div>
-
-            <div class="point">
-                One important thing to understand is that code <strong>outside</strong> of a function can not access any
-                code <code>inside</code> the function.
-            </div>
-
-<pre>
-    <code class="language-javascript">
-function foo() {
-    var a = "inside foo";
-    return a;
-}
-
-console.log(a); //undefined, because "a" is "scoped" to the foo function
-console.log(foo()); //should log "inside foo" because the function was called, and a value returned
-    </code>
-</pre>
-
-            <div class="point">
-                Got it, code outside of a function can't access anything other than what's returned from a function.  So
-                it stands to reason that code inside a function can't access anything outside of the function either?
-            </div>
-
-<pre>
-    <code class="language-javascript">
-var name = "greg";
-
-function capitalize() {
-    return name[0].toUpperCase() + name.slice(1);
-}
-
-var capitalizedName = capitalize();
-console.log(capitalizedName);
-    </code>
-</pre>
-
-        <div class="point">
-            Ah, maybe not what you expected?  Functions do have access to the variables and other functions that exists
-            in outer scopes (which, when you think about it, is why you can console.log(...) something inside of a
-            function.
         </div>
-
-        <h3>Function Expressions and other Gotchas</h3>
-
-        <div class="point">
-            So now we know how to write a function, but there are other ways to do it as well.  You'll surely encounter
-            them in the wild so it's nice to know what's going on when you see them.
-        </div>
-
-        <div class="point">
-            Functions in javascript are "first class".  This means they can be passed as arguments to other functions,
-            returned from other functions, and assigned to variables (instead of being a named function).
-        </div>
-
-        <div class="point">
-            When a function is assigned to a variable, it's called a <strong>function expression</strong>.
-
-            <div class="excercise">
-                Try it: Create a function expression that assigned a function to a variable.
-            </div>
-        </div>
-
-<pre>
-    <code class="language-javascript">
-var capitalize = function (str) {
-    return str[0].toUpperCase() + str.slice(1);
-};
-    </code>
-</pre>
-
-
-        <div class="point">
-            So what is different here.  Notice, the function declaration does not have a name.  This is what is known as
-            an <code>Anonymous function</code>, or a function with no name.
-        </div>
-
-        <div class="point">
-            If it has no name, how do we call it?  Same way we do with other functions, but we use the variable name
-            instead.  In the case of the capitalize function above, we can call it as <code>capitalize("greg")</code>.
-
-            <div class="excercise">
-                Try it: Create and execute a function expression.
-            </div>
-        </div>
-
-<pre>
-    <code class="language-javascript">
-var capitalize = function (str) {
-    if (!str) {
-        return "";
-    }
-
-    return str[0].toUpperCase() + str.slice(1);
-};
-
-console.log(capitalize("greg"));
-    </code>
-</pre>
-
-        <div class="point">
-            One thing to note about anonymous functions, they don't actually have to be anonymous.  In fact, it's good
-            practice to name all your functions, for the purposes of error reporting.  The function below will work
-            just the same.
-        </div>
-
-<pre>
-    <code class="language-javascript">
-var capitalize = function capitalize(str) {
-    if (!str) {
-        return "";
-    }
-
-    return str[0].toUpperCase() + str.slice(1);
-};
-
-console.log(capitalize("greg"));
-    </code>
-</pre>
-
-        <div class="point">
-            Now, lets try an experiment.  Lets create a new function (not a function expression) called <code>logName</code>.
-            Then, above that code, lets call <code>logName</code>.  What would you expect to happen?
-        </div>
-
-<pre>
-    <code class="language-javascript">
-logName("greg");
-
-function logName(name) {
-    console.log(name);
-}
-    </code>
-</pre>
-
-        <div class="point">
-            This is due to something javascipt is doing called <code>hoisting</code>.
-        </div>
-
-        <div class="point">
-            Even though javascript executes <strong>linearly</strong>, variable and function definitions are actually
-            "hoisted" to the top of the scope.  So even though we call logName before we define it, javascript is actually
-            recognizing the definition of the function, hoisting it to the top of the scope, which makes it available to
-            call before the definition in the code actually happens.
-        </div>
-
-        <div class="point">
-            Is the same true of function expressions?
-
-            <div class="excercise">
-                Try it: Call a function expression before it's defined.  What happens?
-            </div>
-        </div>
-
-<pre>
-    <code class="language-javascript">
-foo("greg");
-
-var foo = function (name) {
-    console.log(name);
-};
-    </code>
-</pre>
-
-        <div class="point">
-            So what happend there?  Why did we get the <code>undefined is not a function</code>?
-        </div>
-
-        <div class="point">
-            The reason for this is that <strong>only</strong> named function definitions and variable declarations are
-            hoisted.  The <strong>values</strong> of the variables are not hoisted.
-        </div>
-
-        <div class="point">
-            Lets look at this a little closer.  What would you expect to happen in the example below?
-        </div>
-
-<pre>
-    <code class="language-javascript">
-var name = "Greg";
-
-function alertName() {
-    alert(name);
-
-    var name = "Jules";
-
-    alert(name);
-}
-
-alertName();
-    </code>
-</pre>
-
-        </div>
-
-
     </div>
 
     <div class="row">
@@ -624,21 +375,19 @@ alertName();
             Create a program that will:
 
             <ul class="list">
-                <li>Start by creating an array of your top 10 favorite movies, the titles should be all lowercase</li>
-                <li>Create a function called capitalize that will accept a string as an argument, capitalize that string,
-                    and return the capitalized value.  Please consider edge cases.</li>
-                <li>Create a loop that will loop over all movies in your movies array.</li>
-                <li>Inside each loop, you should capitalize the movie name and set the value in the array.</li>
-                <li>After the loop has been completed, log the movies to the console.  The result should be that the
-                    first letter of each movie has been capitalized.</li>
+                <li>Create a function that will, when called, prompt the user for what they would like a reminder "to do".</li>
+                <li>Store the "to do" itme in an array of "to do" items.</li>
+                <li>Employ edge casing tequniques to make sure the user has input something.</li>
+                <li>If the user has not input anything, alert them that they need to input a valid "to do" item and terminate the program or call the function again</li>
+                <li>If the user has input a valid "to do" item, log or alert the usre of their "to do" item.</li>
+                <li>In your html, create a button the calles the function "onclick"</li>
             </ul>
         </div>
 
-        <h3>Bonus Points</h3>
+        <h3>Challange</h3>
 
         <div class="point">
-            Extend your program above to also capitalize ALL words (not uppercase all words, just capitalize each word)
-            in the movie title.
+            In stead of logging or alerting the to do item, create an empty ul in your html and make your to do items appear in them as li's.
         </div>
     </div>
 
