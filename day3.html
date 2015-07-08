@@ -1,0 +1,310 @@
+<!--.row>(.col-md-3>h2.text-right)+.col-md-9-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geekwise Javascript 1</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/css/prism.css" />
+    <link rel="stylesheet" href="./static/css/reset.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body class="theme day">
+    <header id="nav">
+    </header>
+
+    <div class="container content">
+        <h1 class="row text-center hdr">
+            Day 3
+        </h1>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Concepts</h2>
+            </div>
+            <div class="col-md-9 concepts">
+                <ul>
+                    <li>Review Take Home Assignment</li>
+                    <li>Skill Builder</li>
+                    <li>Control Flow</li>
+                    <li>Take Home Assignment</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Skill Builder</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="point">
+                    Write a small js program that will: (chrome snippet is fine)
+
+                    <ul class="list">
+                        <li>Prompt for two numbers</li>
+                        <li>Store them into variables</li>
+                        <li>Parse the values into numbers (parseInt)</li>
+                        <li>Multiply the two numbers and alert the result</li>
+                        <li>Divide the two numbers and alert the result</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Control Flow</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="point">Control flow simply means controlling what code actually gets executed in your program.</div>
+                <div class="point">
+                    It's very common that your application will want to behave differently based on available data.  One
+                    common scenario is a login/authentication strategy.  If you build an application where you want to
+                    require the user to log in, you'll want to show a login screen if they aren't logged in, or redirect
+                    them to their home page if they are.
+                </div>
+                <div class="point">The kinds of control flow we are going to look at today:
+                    <ul class="list">
+                        <li><code>if</code></li>
+                        <li><code>if else</code></li>
+                        <li><code>if else if</code></li>
+                        <li><code>if else if else</code></li>
+                        <li><code>switch</code></li>
+                        <li>ternary</li>
+                    </ul>
+                    In almost all cases, the control flow will evaluate some condition, and react accordingly.  This
+                    enables us to run some code, while skipping other parts.
+                </div>
+                <div class="point">The most basic form of control flow are <code>if</code> / <code>else</code> statements.</div>
+<pre>
+    <code class="language-javascript">
+//simple if statement
+if (true) {
+
+    console.log("yup");
+
+}
+    </code>
+</pre>
+                <div class="point">
+                    <div class="excercise">
+                        Try it: Create a program that prompts the user for their age. In an if statement check 
+                        if the user is yonger than 18. If so then alert the user "You're a youngun'!"
+                    </div>
+                </div>
+
+<pre>
+    <code class="language-javascript">
+//if else, if the first condition is true, run the first
+//block, else run the second block
+if (false) {
+
+    alert("it's true");
+
+} else {
+
+    alert("it's false");
+
+}
+    </code>
+</pre>
+                <div class="point">
+                    <div class="excercise">
+                        Try it: Using the code from earlier, add an if else statement alerting all those older 
+                        than 18 with anything you like.
+                    </div>
+                </div>
+
+<pre>
+    <code class="language-javascript">
+//if else if statments, the last else is our "fallback"
+if (condition1) {
+
+
+} else if (condition2) {
+
+
+} else {
+
+
+}
+    </code>
+</pre>
+                <div class="point">
+                    <div class="excercise">
+                        Try it: Once more, alter the code and add an else if that checks if the user is between 18 
+                        and 50. In each section alert the user with something different.
+                    </div>
+                </div>
+
+                <div class="point">
+                    With <code>if</code> statements, it's possible to evaluate multiple conditions, and we use logical
+                    operators to do so.  This lets us say, "If this <code>AND</code> that are true, then run this code."
+                    <ul class="list">
+                        <li><code>&&</code> the and operator</li>
+                        <li><code>||</code> the or operator</li>
+                    </ul>
+                </div>
+
+                <pre><code class="language-javascript">
+var a = true;
+var b = false;
+
+//if both a AND b are true...
+if (a && b) {
+    console.log("both a and b are true");
+} else {
+    console.log("one of a or b are false");
+}
+
+//if a OR b is true
+if (a || b) {
+    console.log("one of a or b are true");
+}
+                </code></pre>
+
+                <div class="point">
+                    <div class="excercise">
+                        Try it: Continuing on with our exercise, alter the code to now ask for both the users age and gender. 
+                        Using the two inputs set up an if else if ladder that will alert something different for each combination 
+                        of variables. 
+                    </div>
+                </div>
+
+                <div class="point">
+                    Another common control flow element is the <code>switch</code> statement.  Switch will evaluate the
+                    condition and then perform a given block of code based on that value.  It looks like:
+                </div>
+
+<pre><code class="language-javascript">
+var condition = "foo";
+
+switch (condition) {
+case "foo":
+    alert("foo");
+    break;
+case "bar":
+    alert("bar");
+    break;
+default:
+    alert("wasn't foo or bar");
+}
+</code></pre>
+
+                <div class="point">
+                    <div class="excercise">
+                        Try it: Finally, using only the age variable, refactor your code to use a switch statement instead of an if 
+                        statement.
+                        <br>
+                        <br>
+                        Challenge: Use both variables with the switch statement.
+                    </div>
+                </div>
+
+                <div class="point">
+                    Careful with Switch statements however, they can lead to some unwanted results if you forget the
+                    <code>break</code> keyword called "fall-through" or "pass-through". What happens when you run the
+                    switch statement and omit the break in the "foo" case?
+                </div>
+
+<pre><code class="language-javascript">
+var condition = "foo";
+
+switch (condition) {
+case "foo":
+    alert("foo");
+case "bar":
+    alert("bar");
+    break;
+default:
+    alert("wasn't foo or bar");
+}
+</code></pre>
+
+                <div class="point">
+                    Ternary operators are a short hand if else type of control flow.
+                </div>
+                <div class="point">
+                    They use the <code>?</code> and the <code>:</code> as the syntax.
+                </div>
+                <div class="point">
+                    It looks like: <code class="language-javascript">condition ? trueValue : falseValue;</code>
+                </div>
+                <pre><code class="language-javascript">
+var loggedIn = true;
+var needsLogin = loggedIn ? false : true;
+
+var age = 31;
+var logout = age < 13 ? true : false;
+                </code></pre>
+
+                <div class="point">Ternary operators are great for simple situations where the conditonal statement can be boiled down to a yes or no answer.</div>
+                <div class="point">Avoid nested ternary</div>
+                <pre><code class="language-javascript">
+var dogs = false
+var cats = false;
+var fish = true;
+var hasPets = dogs ? true : cats ? true : fish ? true : false; //wat?
+                </code></pre>
+
+                <div class="point">Just because you can do something, doesn't mean you should...
+                <br>
+                Just because you have a hammer, not everything is a nail.</div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"><h2 class="text-right">Operators & Conditions in Practice</h2></div>
+            <div class="col-md-9">
+                <div class="point">
+                    <h4>Who's practiced more?</h4>
+                    <div class="problem">
+                        Jules has been writing javascript for 4 years.  She spends 4 hours every day writing javascript.
+                        Hallie has been writing javascript for 6 years, but only spends about 2.5 hours a day coding.
+                    </div>
+                    <br>
+                    <div class="problem">
+                        Write some code that will determine the total number of hours each have spent coding.  Then using
+                        some control flow log the name (Jules or Hallie) that has had the most time at the keyboard.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Take Home Assignment</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="point">
+                    Create a program that will:
+
+                    <ul class="list">
+                        <li>
+                            Prompt the user for something that they would like to do.
+                        </li>
+                        <li>
+                            Make sure that the user actually types something.
+                        </li>
+                        <li>
+                            If the user has not typed anything, alert them that they need to type something and then terminate 
+                            the program.
+                        </li>
+                        <li>
+                            If they have input a to do item, alert the user with the item and console log it.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./static/js/prism.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./static/js/nav.js"></script>
+</body>
+</html>

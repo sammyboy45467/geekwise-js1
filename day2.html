@@ -1,0 +1,323 @@
+<!--.row>(.col-md-3>h2.text-right)+.col-md-9-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geekwise Javascript 1</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/css/prism.css" />
+    <link rel="stylesheet" href="./static/css/reset.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body class="theme day">
+    <header id="nav">
+    </header>
+
+    <div class="container content">
+        <h1 class="row text-center hdr">
+            Day 2
+        </h1>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Concepts</h2>
+            </div>
+            <div class="col-md-9 concepts">
+                <ul>
+                    <li>alert / confirm / prompt</li>
+                    <li>Skill Builder</li>
+                    <li>Symantics in the syntax</li>
+                    <li>Operators</li>
+                    <li>Math</li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Alert / Confirm / Prompt</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="refresh">
+                    We will get much deeper into functions in the following class sessions, but for now, understand
+                    a function is nothing more than some grouped javascript behavior that performs a
+                    specific actions.  You <code>call</code> a function.  It <code>return</code>s a value.
+                </div>
+                <div class="point"><code>alert()</code> and <code>confirm()</code> and <code>prompt()</code> can all be used to convey / solicit information from a user</div>
+                <div class="point"><code>alert()</code> is a read only type of deal</div>
+                <div class="point"><code>confirm()</code> will return bool depending on the button the user clicked.</div>
+                <div class="point"><code>prompt()</code> will allow you to ask the user for input, and then use it in your script.</div>
+                <div class="point">All three functions stop the execution of the javascript until some action takes place.</div>
+                <div class="point">
+                    <div class="exampleLeadin">Some Examples</div>
+                    <pre>
+                        <code class="language-javascript">
+//tell the user something
+alert("Ah, hi there, I'll wait here till you close me");
+
+//confirm a users action
+confirm("Sure you want to do that...?");
+
+//ask the user for input
+prompt("What is your name?");
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"><h2 class="text-right">Skill Builder</h2></div>
+            <div class="col-md-9">
+                <div class="point">
+                    <ul>
+                        <li>Create a new script called <code>app.js</code></li>
+                        <li>In app.js, do the following:
+                            <ul class="list">
+                                <li>Ask for your first name</li>
+                                <li>Ask for your last name</li>
+                                <li>Log your first name to the console</li>
+                                <li>Alert your last name</li>
+                                <li>Confirm (anything) and alert the result of the confirm</li>
+                                <li>Include your <code>app.js</code> file in a blank empty html page</li>
+                                <li>Execute your script</li>
+                                <li>confirm that your script functions the way it's expected too</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Symantics in the syntax</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="point">Readability matters</div>
+                <div class="point">camelCasing</div>
+                <div class="point">CaSe SeNsItIvItY</div>
+                <div class="point">whitespace</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"><h2 class="text-right">Operators</h2></div>
+            <div class="col-md-9">
+                <div class="point">
+                    We talked a bit about number data types in the <a href="day1.html">last class</a>, but not much about
+                    what we can do with them.
+                </div>
+                <div class="point">Operators allow us to take action and do something with the variables we've created.</div>
+
+                <div class="point">
+                    Some operators you will see often include:
+                    <ul class="list">
+                        <li>Mathmatical
+                            <ul class="list">
+                                <li><code>=</code> (equals, assignment)</li>
+                                <li><code>+</code> (addition)</li>
+                                <li><code>-</code> (subtraction)</li>
+                                <li><code>*</code> (multiplication)</li>
+                                <li><code>/</code> (division)</li>
+                                <li><code>%</code> (modulus)</li>
+                                <li><h3>Shorthand Operators</h3></li>
+                                <li><code>+=</code></li>
+                                <li><code>-=</code></li>
+                                <li><code>*=</code></li>
+                                <li><code>/=</code></li>
+                            </ul>
+                        </li>
+                        <li>Comparison
+                            <ul class="list">
+                                <li><code>==</code> (loose comparison)</li>
+                                <li><code>===</code> (strict comparison)</li>
+                                <li><code>!=</code> (loose not equal comparison)</li>
+                                <li><code>!==</code> (strict not equal comparison)</li>
+                                <li><code><</code> (less than)</li>
+                                <li><code>></code> (greater than)</li>
+                                <li><code><=</code> (less than or equal to)</li>
+                                <li><code>>=</code> (greater than or equal to)</li>
+                            </ul>
+                        </li>
+                        <li>Logical
+                            <ul class="list">
+                                <li><code>&&</code> (and)</li>
+                                <li><code>||</code> (or)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Math</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="point">You can perform mathmatical calculations using operators as discussed above.
+                    <div class="excercise">
+                        Try it: open your console and run a few calculations like <code>2 + 2</code>, etc...
+                    </div>
+                </div>
+
+                <div class="point">
+                    The "value" of the expression can be stored for later use.
+                    <div class="excercise">
+                        Try it: create a variable called <code>result</code>.  Add two numbers together, and store the
+                        value in your result variable using the <code>=</code> operator.  Log that value to the console.
+                    </div>
+                </div>
+
+                <div class="point">
+                    Shorthand notation exists for quickly operating on an existing variable.
+                    <ul class="list">
+                        <li><code>+=</code></li>
+                        <li><code>-=</code></li>
+                        <li><code>*=</code></li>
+                        <li><code>/=</code></li>
+                    </ul>
+                    With these shortcut helpers, you can turn this:
+                </div>
+                <pre><code class="language-javascript">
+var a = 0;
+a = a + 5; //5
+
+var b = 10;
+b = b / 5; //2
+                </code></pre>
+                <div class="point">
+                    into this:
+                </div>
+<pre>
+    <code class="language-javascript">
+var a = 0;
+
+a += 5;
+
+console.log(a);
+
+
+var b = 10;
+
+b /= 5;
+
+console.log(b);
+    </code>
+</pre>
+
+                <div class="point">
+                    Operator Precedence, works like it did when you were in sixth grade.
+                    <ol class="list">
+                        <li>Parentheses</li>
+                        <li>Multiplication / Division</li>
+                        <li>Addition / Subtraction</li>
+                    </ol>
+                </div>
+
+                <pre><code class="language-javascript">
+//what's the answer?
+var a = 5 + 5 * 10;
+console.log(a);
+                </code></pre>
+
+                <div class="point">
+                    If you wanted to have the <code>5 + 5</code> evaluate first, you would need to use
+                    paren's to group the parts you want to take precedence.
+                </div>
+                <pre><code class="language-javascript">
+//what's the answer?
+var a = (5 + 5) * 10;
+console.log(a);
+                </code></pre>
+
+                <div class="point">
+                    The modulus <code>%</code> is a usful operator to know how to leverage.
+                </div>
+                <div class="point">You can use modulus to determine if something is even or odd, a typical use is if
+                you are generating content like rows in a table, and you want to put an "even" class on even rows
+                and and "odd" class on odd rows.</div>
+                <pre><code class="language-javascript">
+var a = 5;
+console.log(a % 2); // 1
+
+
+var b = 6;
+console.log(b % 3); // 0
+                </code></pre>
+
+                <div class="point">It's also very easy to increment / decrement a number by one using javascript.</div>
+                <div class="point">Use the <code>++</code> or <code>--</code> operators, Note: these do not require
+                re-assigning the value to a variable, the work on existing variables.</div>
+
+                <pre><code class="language-javascript">
+var a = 5;
+a++;
+console.log(a);
+
+
+var b = 6;
+b--;
+console.log(b);
+                </code></pre>
+
+                <div class="point"><code>parseInt(number)</code> can be used for converting a float to an int, or for turning a string
+                into an int.</div>
+
+                <pre><code class="language-javascript">
+var a = 1.6;
+var b = parseInt(a); // number data type 1
+
+var c = "5";
+var d = parseInt(c); // number data type 5
+                </code></pre>
+
+                <div class="point">If you try and parse a value that can't be turned into a number, you will get NaN (
+                not a number)</div>
+
+                <pre><code class="language-javascript">
+var a = "foo";
+var b = parseInt(a); // NaN
+                </code></pre>
+
+                <div class="point">
+                    You can check if a value is NaN by using the isNaN function.
+                </div>
+
+                <pre><code class="language-javascript">
+var a = "foo";
+var b = parseInt(a); //NaN
+console.log(isNaN(b)); //true
+                </code></pre>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="text-right">Take Home Assignment</h2>
+            </div>
+            <div class="col-md-9">
+                <div class="point">
+                    Write a script, and accompanying html file that will:
+                    <ol class="list">
+                        <li>Prompt for a number value (provide a default of 10)</li>
+                        <li>Prompt for another number value (provide a default of 10)</li>
+                        <li>Convert the promped values into integers.</li>
+                        <li>add the numbers together and alert the user with the outcome.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./static/js/prism.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./static/js/nav.js"></script>
+</body>
+</html>

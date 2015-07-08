@@ -1,0 +1,402 @@
+<!--.row>(.col-md-3>h2.text-right)+.col-md-9-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geekwise Javascript 1</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700'
+          rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/css/prism.css" />
+    <link rel="stylesheet" href="./static/css/reset.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body class="theme day">
+<header id="nav">
+</header>
+
+<div class="container content">
+    <h1 class="row text-center hdr">
+        Day 5
+    </h1>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-right">Concepts</h2>
+        </div>
+        <div class="col-md-9 concepts">
+            <ul>
+                <li>Review Take Home Assignment</li>
+                <li>Skill Builder</li>
+                <li>functions</li>
+                <li>creating functions</li>
+                <li>Edge cases</li>
+                <li>Take home assignment</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-right">Skill Builder</h2>
+        </div>
+        <div class="col-md-9">
+            <div class="point">
+                 Write a js program that will:
+
+                <ul class="list">
+                    <li>Create and array containing 5 of your favorite movies.</li>
+                    <li>Create a second array that holds the second and third movies in the previous array.</li>
+                    <li>Remove the fourth item and replace it with any other movie you would like.</li>
+                    <li>Prompt the user for a movie title.</li>
+                    <li>Check if the title is already in the array.</li>
+                    <li>If it is not add the movie to the array.</li>
+                    <li>Log the items in the array.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<div class="row">
+        <div class="col-md-3">
+            <h2 class="text-right">functions</h2>
+        </div>
+        <div class="col-md-9">
+            <div class="point">
+                We've talked about functions during our first few classes, but up until now we've not really looked at
+                what they are, how they work, and most importantly, how we can write our own.
+            </div>
+
+            <div class="point">
+                Lets define a javascript function as: <strong>a set of statements that performs a task or calculates a
+                                                              value</strong>
+            </div>
+
+            <div class="point">
+                Functions allow you to perform a series of tasks, and return a value that can be used later.
+            </div>
+
+            <div class="point">
+                If a function does not return a value, it will automatically return <code>undefined</code>.
+            </div>
+
+            <div class="point">
+                All javascript datatypes have different functions that work on them.  For example:
+
+                <ul class="list">
+                    <li>Arrays have <code>push</code>, <code>pop</code>, etc...</li>
+                    <li>Strings have <code>split</code>, <code>charAt</code>, etc...</li>
+                    <li>Objects have <code>hasOwnProperty</code></li>
+                </ul>
+
+                These functions are all built into each datatypes.
+            </div>
+
+<pre>
+    <code class="language-javascript">
+//string method, turns string into an array
+//NOTE TO SELF...YOU MIGHT NEED THIS LATER...JUST SAYIN
+var movie = "The Shawshank Redemption";
+var moviePieces = movie.split(" ");
+console.log(moviePieces);
+
+//array method, turns array into string
+console.log(moviePieces.join(" "));
+    </code>
+</pre>
+
+            <div class="point">
+                Ok, so we know that javascript has built in functions that perform tasks on certain datatypes, but wouldn't
+                it be nice if we could write our own functions?
+            </div>
+
+            <h3>Creating your first function</h3>
+
+            <div class="point">
+                To define a function requires four things:
+
+                <ul class="list">
+                    <li>The <code>function</code> keyword followed by...</li>
+                    <li>The name of the function</li>
+                    <li>A list of arguments to the functions enclosed in parentheses and separated by commas</li>
+                    <li>The statements that define the functions enclosed in curly brackets</li>
+                </ul>
+
+                <div class="excercise">
+                    Try it: Create a function that logs "hello world" to the console.
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+function helloWorld() {
+    console.log("hello world");
+}
+    </code>
+</pre>
+
+            <div class="point">
+                Lets pick that apart line by line:
+
+                <ol class="list">
+                    <li><code>function helloWorld() {</code> - the <code>function</code> keyword followed by an arbitrary
+                    function name.  In this case <strong>helloWorld</strong>.  The function does not take any arguments
+                    so we just have an empty set of parentheses.  Then we have an opening curly bracket to start our
+                    javascript statements.</li>
+                    <li><code>console.log("hello world");</code> - the functions body.  In this case, we are simply logging
+                    "hello world" to the console.</li>
+                    <li><code>}</code> - closing curly brace, ends our function definition</li>
+                </ol>
+            </div>
+
+            <div class="point">Great, run that in the console.  What happens?</div>
+
+            <div class="point">Javascript functions need to be "called" or "invoked".  Simply writing the function
+            only makes the javascript interpreter aware that it exists, it does not call it right away.</div>
+
+            <div class="point">You call a function by using it's name, followed by a set of parenthesis.  Recall other
+            functions we've used, the functions are always called with the parentheses.  <code>console.log(...)</code>
+            <code>a.push(...)</code>, etc...</div>
+
+            <div class="point">So, lets call our function
+                <div class="excercise">
+                    Try it: alter your code to call the function
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+function helloWorld() {
+    console.log("hello world");
+}
+
+helloWorld();
+    </code>
+</pre>
+
+            <div class="point">Now you should see your console.log appear.  So we called the function, and javascript
+            executed the code found inside it.</div>
+
+            <div class="point">
+                Now, lets create a function that takes 1 argument, and log that to the console instead of the hard coded
+                "hello world" string.  While were at it lets rename it to something more appropriate, like <code>log</code>.
+
+                <div class="excercise">
+                    Try it: Create a function called log that accepts one argument, and logs it to the console.
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+function log(stuff) {
+    console.log(stuff);
+}
+
+log("the fox jumps over the lazy dog");
+    </code>
+</pre>
+
+            <div class="point">
+                Notice, we do not use the <code>var</code> keyword when working with our function arguments.  The arguments
+                are scoped to that function (more on this later).
+            </div>
+
+            <div class="point">
+                <div class="excercise">
+                    Try it: Call your <code>log</code> function without passing any arguments, what gets logged to the
+                    console?
+                </div>
+            </div>
+
+            <div class="point">Great, now we're getting somewhere, we can define our own functions that accept arguments
+            and do something with them.  It's also worth pointing out that functions can also call other functions.</div>
+
+            <div class="point">
+                Lets try something a little more complicated, but more useful.  It would be really nice if we had a way
+                to capitalize a string, for proper names, etc...  Maybe js provides a nice way to do this:
+
+                <div class="excercise">
+                    Try it: Lets check and see if js provides a string capitalize function...
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+var name = "Adam";
+var capped = name.capitalize();
+
+console.log(capped);
+
+>> TypeError: undefined is not a function
+    </code>
+</pre>
+
+            <div class="point">
+                Lets look a little closer at that error... <code>undefined is not a function</code>.  In our example,
+                we are calling two functions, <code>name.capitalize()</code> and <code>console.log()</code>.  Which one
+                is likely giving us the problem?
+            </div>
+
+            <div class="point">
+                Since we know <code>console.log()</code> is a real function, it's likely that javascript is telling us
+                that <code>name.capitalize</code> is undefiend, and thus when we try and call it, it's not a function.
+            </div>
+
+            <div class="point">
+                While js does not provide a way of capitalizing the first letter of a string, it does provide a way to
+                upper case an entire string. It looks like <code>"adam".toUpperCase()</code>.
+
+                <div class="excercise">
+                    Try it: Create a string (variable or directly inline) and use the toUpperCase function on it.  What
+                    is your result?
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+console.log("adam".toUpperCase());
+    </code>
+</pre>
+
+            <div class="point">
+                The result should be an entirely uppercase string.  So how can we use this to our advantage if we
+                wanted to write a function that will capitalize just the first letter?
+            </div>
+
+            <div class="point">
+                Also, we want this function to accept a string and capitalize it, we need to be able to get that value
+                back out of the function, this is where the <code>return</code> keyword is used.  <code>return</code> will
+                return the specified value out of the function so you can use it else where.
+
+                <div class="excercise">
+                    Try it: Lets discuss how you might tackle creating a capitalized string using methods we've discussed
+                    in the last few classes.  Hint: <code>toUpperCase</code>, string indexes, and <code>slice</code>.
+                </div>
+
+                <div class="sidenote">
+                    In javascript <strong>strings</strong> are <strong>not mutable</strong>.  This means that when you
+                    take any action on a string, you're actually creating a new string.  So it's important to realize that
+                    since I can't actually change the string "adam" into "Adam", we can fake it by creating another string.
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+function capitalize(str) {
+    return str[0].toUpperCase() + str.slice(1);
+}
+    </code>
+</pre>
+
+            <h3>Handling Edge Cases</h3>
+
+            <div class="point">
+                When writing functions (or any js program, really), it's very important to consider edge cases.  As a
+                developer, it's your job to anticipate odd ways your function might be used and make sure it handles
+                those cases.  What happens if you call your capitalize function on an empty string?  How can we fix that?
+                What other edge cases might be useful to consider?
+            </div>
+
+<pre>
+    <code class="language-javascript">
+//this handles our case when no string is passed in (str is "falsy")
+function capitalize(str) {
+    if (!str) {
+        return "";
+    }
+
+    return str[0].toUpperCase() + str.slice(1);
+}
+    </code>
+</pre>
+
+            <div class="point">
+                Notice the function now contains two return points, one for the case where we don't have a string, and
+                one where we do.  It's also important to understand that a function will stop executing any code following
+                a return statement, so if no string is passed in, nothing past <code>return "";</code> will be executed.
+            </div>
+
+            <div class="point">
+                What about making sure that the argument passed into the function is actually a string?
+            </div>
+
+            <div class="point">
+                The <code>typeof</code> operator is helpful here.  <code>typeof</code> operator will evaluate the type
+                of thing we are working with, and return that value as a string.
+
+                <div class="excercise">
+                    Try it: Use the <code>typeof</code> keyword to detect the type of thing we're dealing with.
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+var name = "adam";
+console.log(typeof name);
+console.log(typeof 3);
+    </code>
+</pre>
+
+            <div class="point">
+                So, how can we use typeof to ensure the argument is a string?
+                <div class="excercise">
+                    Try it: alter your original capitalize function to ensure that a value is passed in, and that it's
+                    a string.
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+function capitalize(str) {
+    if (!str || typeof str !== "string") {
+        return str;
+    }
+
+    return str[0].toUpperCase() + str.slice(1);
+}
+    </code>
+</pre>
+
+            <div class="point">
+                It's often these "edge cases" that will bite you in the long run.  Always begin thinking about odd ways
+                someone might use your code and anticipate how you could handle it!
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-3">
+        <h2 class="text-right">Take Home Assignment</h2>
+    </div>
+    <div class="col-md-9">
+        <div class="point">
+            Create a program that will:
+
+            <ul class="list">
+                <li>Create a function that will, when called, prompt the user for what they would like a reminder "to do".</li>
+                <li>Store the "to do" itme in an array of "to do" items.</li>
+                <li>Employ edge casing tequniques to make sure the user has input something.</li>
+                <li>If the user has not input anything, alert them that they need to input a valid "to do" item and terminate the program or call the function again</li>
+                <li>If the user has input a valid "to do" item, log or alert the usre of their "to do" item.</li>
+                <li>In your html, create a button the calles the function "onclick"</li>
+            </ul>
+        </div>
+
+        <h3>Challange</h3>
+
+        <div class="point">
+            In stead of logging or alerting the to do item, create an empty ul in your html and make your to do items appear in them as li's.
+        </div>
+    </div>
+
+</div>
+<!-- closing the main container -->
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="./static/js/prism.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./static/js/nav.js"></script>
+</body>
+</html>
