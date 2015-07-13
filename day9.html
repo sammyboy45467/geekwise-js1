@@ -30,6 +30,12 @@
         <ul>
             <li>Review Take Home Assignment</li>
             <li>Skill Builder</li>
+            <li>Creating Elements</li>
+            <li>Removing Elements</li>
+            <li>Event Listeners</li>
+            <li>Working with forms</li>
+            <li>Working with Radio / checkboxes</li>
+            <li>Event Delegation</li>
             <li>Array sorting</li>
             <li>Organizing An application</li>
             <li>More DOM</li>
@@ -81,6 +87,674 @@
     </div>
 
 
+    <div class="row">
+
+        <div class="col-md-3">
+            <h3>Creating Elements</h3>
+        </div>
+
+        <div class="col-md-9">
+            <div class="point">
+                Here is where the real magic of the DOM becomes apparent.  Not only can we inspect the existing DOM, we
+                can add to it!  To create an element we use the <code>document.createElement()</code> function.  It takes
+                as an argument a string with the same name as the tag you want to create.  So if you wanted to create
+                a anchor, you would use <code>document.createElement("a")</code>.  Lets make a new element now...
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        var a = document.createElement("a");
+        console.log(a);
+    </code>
+</pre>
+
+            <div class="point">
+                Great, so we created an empty anchor tag.  This isn't of to much use yet, lets assign some other properties
+                to the anchor so we can get some actual use out of it.  How about some text (so we have something to
+                click on).  We can set the text content using the <code>textContent</code> property
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        a.textContent = "I'm a link to google";
+        console.log(a);
+    </code>
+</pre>
+
+            <div class="point">
+                And what good is a link without an <code>href</code>?  Now...how did we set attributes on a link?
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        a.setAttribute("href", "http://www.google.com");
+        console.log(a);
+    </code>
+</pre>
+
+            <div class="point">
+                It's worth it to note, that there are some properties of an element that you can access without
+                <code>setAttribute</code>.  <code>href</code> is one of these properties.  If you're ever not sure check
+                out the MDN for what attributes are available via an elements interface.  Here is the link to the
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement">Anchor interface</a>.
+                Lets set the <code>href</code> of the <code>a</code> tag using this syntax.
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        a.href = "http://www.yahoo.com";
+    </code>
+</pre>
+
+            <div class="point">
+                If you're refreshing your page hoping to see your new element ready for use, this may be anticlimactic
+                for you.  So far, we've created an element in memory, but now we need to do something with it.
+            </div>
+
+            <div class="point">
+                Lets add it on the page.  We do this using the <code>appendChild</code> function.  When using the
+                <code>appendChild</code> function, we first need to tell the DOM where exactly to append the child to.
+                In your console, enter <code>document.body</code>.  What does the console show?
+            </div>
+
+            <div class="point">
+                The <code>document.body</code> is a shortcut that to the body tag.  Since we want the new element to
+                show up on the page, at a minimum it needs to be attached to the body tag (since the body tag is what is
+                visible on the page).
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        document.body.appendChild(a);
+    </code>
+</pre>
+
+            <div class="point">
+                As you can see above, the <code>document.body</code> is a reference to the &lt;body&gt; tag.  So it's telling
+                javascript to append a child node to the body tag.  This can be done on ANY node you have selected.
+
+                <div class="excercise">
+                    Try it: append an anchor tag to the h1 we selected earlier in the excercise.
+                </div>
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        h1.appendChild(a);
+    </code>
+</pre>
+        </div>
+
+        <div class="col-md-3">
+            <h3>Removing Elements</h3>
+        </div>
+
+        <div class="col-md-9">
+            <div class="point">
+                What good would all of this be if we couldn't remove elements from the page.  This is done with the
+                <code>removeChild</code> called on the parent element of the element you want to remove.
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        document.body.removeChild(a);
+    </code>
+</pre>
+
+            <div class="point">
+                Note: the removeChild example isn't to exciting, since we add it, then remove it right away.  Lets delay
+                the removal of the element using <code>setTimeout</code>.
+            </div>
+
+<pre>
+    <code class="language-javascript">
+        setTimeout(function () {
+        document.body.removeChild(a);
+        }, 2000);
+    </code>
+</pre>
+
+            <div class="point">
+                The <code>setTimeout</code> function takes as an argument a function as the first argument and a number
+                as the second argument.  The setTimeout function will wait the specified amount of time, then call the
+                function you've passed in.  The above will wait 2000 milliseconds, then call the function.
+            </div>
+        </div>
+    </div>
+
+    <h3>Styling Elements</h3>
+
+    <div class="point">
+        Along with selecting, adding and modifying elements in the dom, we can also apply styling.  We do this via the
+        <code>element.style</code> property.
+    </div>
+
+    <div class="point">
+        When we use this property, the style names use no dashes, instead using camelCasing.  For instance, if a
+        css selector looked like:
+    </div>
+
+<pre>
+    <code class="language-css">
+        a {
+        background-color: red;
+        }
+    </code>
+</pre>
+
+    <div class="point">
+        The javascript style property would be:
+    </div>
+
+<pre>
+    <code class="language-javascript">
+        a.style.backgroundColor = "red";
+    </code>
+</pre>
+
+    <div class="point">
+        However, we could alternatively set the style property using the <code>setAttribute</code> function.  When
+        we do it that way, we can use the regular css syntax.
+    </div>
+
+<pre>
+    <code class="language-javascript">
+        a.setAttribute("style", "background-color: red; color: white;");
+    </code>
+</pre>
+
+    <h3>Putting it all together</h3>
+
+    <div class="point">
+        So at this point we now know how to select existing elements, create new elements, modify element attributes,
+        and append the elements to other elements already on the page.  Lets create a helper function to make
+        some of this easier.
+
+        <div class="excercise">
+            Try it: Create a function that will have the following signature: <code>e(elementType, text, attributes, styles)</code>
+            where <code>elementType</code> is a string of an element type, attributes is an object of attributes to set
+            on an element, and styles is an object of style properties to set on an object.  Then return the
+            newly created element.
+        </div>
+    </div>
+
+<pre>
+    <code class="language-javascript">
+        function e(elementType, text, attributes, styles) {
+        var newElement = document.createElement(elementType);
+        newElement.textContent = text;
+
+        //set the attributes on the tag
+        for (var attr in attributes) {
+        if (attributes.hasOwnProperty(attr)) {
+        newElement.setAttribute(attr, attributes[attr]);
+        }
+        }
+
+        //set the styles
+        for (var style in styles) {
+        if (styles.hasOwnProperty(style)) {
+        newElement.style[style] = styles[style];
+        }
+        }
+
+        return newElement;
+        }
+
+        e("a", "link to google", {href: "http://www.google.com"}, {color: "red"});
+    </code>
+</pre>
+
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <h2 class="text-right">Event Listeners</h2>
+    </div>
+    <div class="col-md-9">
+        <div class="point">
+            In javascript, Event listeners are how we can react to user interaction on the page. For
+            instance, alert something to a user when they try and delete an element, or run an arbitrary
+            javascript function when a user clicks a button.
+        </div>
+
+        <div class="point">
+            The DOM has built in methods that allow for registering "handlers" for a given
+            "<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Events">event</a>", like click or
+            mouseover.
+        </div>
+
+        <div class="point">
+            Lets start by creating a simple html page with a with a button.  We'll assign an event handler
+            to the button.
+        </div>
+
+<pre>
+    <code class="language-markup">
+        &lt;button id="alert"&gt;Alert something&lt;/button&gt;
+    </code>
+</pre>
+
+        <div class="point">
+            Now that we have a button we can add a <code>click</code> handler for, lets actually add the listener. We
+            will use the <code>element.addEventListener(event, handler)</code> function where event is a string for a
+            named event, and the handler is a function to call when the event happens. In this way, the
+            function is referred to as a <code>callback</code>.
+
+            <div class="excercise">
+                Try it: Add the button markup, and write some js that will select the button, and then use
+                the button to add an event listener.
+            </div>
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        var button = document.getElementById("alert");
+
+        button.addEventListener("click", function () {
+        alert("hello world");
+        console.log(this); //what is the context to our callback function?
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            Now, if you've added the button markup, and run that javascript, you should now be able to click
+            on the button and see an alert. Notice the console.log there? What is the <code>this</code> of
+            the function?
+        </div>
+
+        <div class="point">
+            In callbacks, it's usually the case that the <code>context</code> will the the node element itself.
+        </div>
+
+        <div class="point">
+            Lets make this a little more dynamic. Add an attribute to your button called <code>rel="..."</code>
+        </div>
+<pre>
+    <code class="language-markup">
+        &lt;button id="alert" rel="This is some text"&gt;Alert something&lt;/button&gt;
+    </code>
+</pre>
+
+        <div class="point">
+            Lets use that new rel attribute as the content of our alert.  Since we know that the context of
+            our function is going to be the node itself, we can use all of our node related functions on the
+            this object.
+
+            <div class="excercise">
+                Try it: Use the <code>this</code> inside your callback to get the attribute value and alert
+                that instead of the hard coded text.
+            </div>
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        var button = document.getElementById("alert");
+
+        button.addEventListener("click", function () {
+        alert(this.getAttribute("rel"));
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            <div class="excercise">
+                Alter the takehome assignment to add a "rel" attribute to the <code>&lt;li&gt;</code> nodes.
+                Then addEventListener for clicks on the <code>&lt;li&gt;</code> tags.  Alert the <code>rel</code>
+                attributes for each li that is clicked on.
+            </div>
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        //loop our movie array and create one li for each movie,
+        //with the title as the text
+        for (var i = 0; i < movieObjs.length; i++) {
+        var movie = movieObjs[i];
+        var li = e("li", movie.title, {rel: movie.title}, {color: "red"});
+        li.addEventListener("click", function () {
+        alert(this.getAttribute("rel"));
+        });
+
+        ul.appendChild(li);
+        }
+    </code>
+</pre>
+
+        <div class="point">
+            The above modification will add a rel attribute to our li nodes that will track the movie title,
+            and the new event listener will listen for <code>click</code> events and run the specified callback
+            which will alert the <code>rel</code> attribute.
+        </div>
+
+        <div class="point">
+            There are many more event types you can have element's listen for, and many that are used specifically
+            with forms.  We'll talk about those next...
+        </div>
+
+        <h3>Working with forms</h3>
+
+        <div class="point">
+            Forms in HTML are a perfect way to collect information from someone interacting with your webpage.
+            Until now, we've used prompts as a way of collecting data, but prompts are clunky which makes a
+            form a much more attractive alternative.  Form usages vary widely based on the type of
+            information you're collecting, and which form elements you decide to work with.
+        </div>
+
+        <div class="point">
+            Lets start with a simple text input, that will allow us to input a movie title.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        &lt;form name="newMovieForm" id="newMovieForm"&gt;
+        &lt;input type="text" name="movieTitle" id="movieTitle" /&gt;
+        &lt;input type="submit" value="Add Movie" /&gt;
+        &lt;/form&gt;
+    </code>
+</pre>
+
+        <div class="point">
+            Notice, we've added id's to our form and our input.  This is going to make it easy to work the
+            form fields in javascript.
+        </div>
+
+        <div class="point">
+            Also, notice that our form tag lacks an action or method attribute you may be familiar with. This
+            is because we aren't actually going to be submitting this form in a traditional way.  We'll be
+            using javascript to work with the form, meaning there won't be a traditional submit needed.
+        </div>
+
+        <h3>The <code>submit</code> event</h3>
+
+        <div class="point">
+            So, just like we added a <code>click</code> event to our li tags in the previous exercise, there
+            are other events we can listen for and react to with javascript.  One of these is the <code>submit</code>
+            event of an HTML form.
+        </div>
+
+        <div class="point">
+            This works like you would probably expect.  We get a reference to our form, add a submit event
+            listener, then write a callback function to handle processing our form.
+        </div>
+
+        <div class="point">
+            To start with, our goal will be to <code>alert</code> the movie title entered in the form when we
+            click the submit button.  To do this, we need to know how to get the <code>value</code> from a
+            form field.  We use the <code>value</code> property for this.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        document.getElementById("movieTitle").value;
+    </code>
+</pre>
+
+        <div class="point">
+            Enter a value in the field and then run the above code in the console.  The result should be the
+            value you entered in the field.
+        </div>
+
+        <div class="point">
+            Now that we know how to get the value of a form field, lets add an event handler that will alert
+            the value of the movieTitle field when the form is submitted.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        var form = document.getElementById("newMovieForm");
+
+        form.addEventListener("submit", function () {
+        var movie = document.getElementById("movieTitle").value;
+        alert(movie);
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            Now, enter a value in your form field, and click submit.  What happens?  What result did you get?
+            What happened after you dismissed the alert?
+        </div>
+
+        <div class="point">
+            You should have seen your form was submitted.  Well, that's not very useful, since as soon as the
+            form is submitted, all the javascript we were executing will be refreshed, and everything starts
+            over from scratch.  Wouldn't it be great if we could some how stop that page refresh from happening?
+        </div>
+
+        <div class="point">
+            This is where the <code>event</code> object becomes really useful.  The event listener callback
+            that we've been working with actually receives one argument.  We've not used it thus far, but when
+            the callback is run, it's passed the <code>event</code> object as an argument.
+        </div>
+
+        <div class="point">
+            The event object contains properties and functions related to the event that occurred, a submit
+            event in this case.
+        </div>
+
+        <div class="point">
+            It also contains functions that allow us to alter how the event continues after our callback function
+            has run.  One particularly useful is the <code>evt.preventDefault()</code> function.
+        </div>
+
+        <div class="point">
+            The <code>preventDefault()</code> function does exactly what it says, it prevents the default behavior
+            from occuring.  That means is we are working with a submit event, the <code>preventDefault</code> function
+            would prevent the submit from happening, making our callback function the only way to work with
+            this form, as it will no longer submit.  Lets try it!
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        //notice the evt argument now being passed to the event listener callback
+        var form = document.getElementById("newMovieForm");
+
+        form.addEventListener("submit", function (evt) {
+        var movie = document.getElementById("movieTitle").value;
+        alert(movie);
+        evt.preventDefault();
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            So now we get our movie title alerted, but the form no longer submits. Success!
+        </div>
+
+        <h3>
+            Working with radio / checkboxes
+        </h3>
+
+        <div class="point">
+            Radio buttons let you select one option from a group items.  The name attribute on a group of
+            radio buttons is always the same.  Lets add a "genre" radio group with a few options.
+        </div>
+
+
+<pre>
+    <code class="language-javascript">
+        &lt;form name="newMovieForm" id="newMovieForm"&gt;
+        &lt;input type="text" name="movieTitle" id="movieTitle" /&gt;
+        &lt;div id="genre"&gt;
+        &lt;input type="radio" name="genre" value="comedy" /&gt; comedy&lt;br /&gt;
+        &lt;input type="radio" name="genre" value="drama" /&gt; drama&lt;br /&gt;
+        &lt;input type="radio" name="genre" value="horror" /&gt; horror
+        &lt;/div&gt;
+        &lt;input type="submit" value="Add Movie" /&gt;
+        &lt;/form&gt;
+    </code>
+</pre>
+
+        <div class="point">
+            We can't use <code>getElementById</code> to get our radio inputs, but the dom does give us some
+            other methods we can use to work with them.
+        </div>
+
+        <div class="point">
+            <code>document.getElementsByName(...)</code> can be used in order to select an element by it's
+            name attribute, which is perfect for radio buttons, since they always have the same name.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        var genreInputs = document.getElementsByName("genre");
+        console.log(genreInputs);
+    </code>
+</pre>
+
+        <div class="point">
+            What does <code>genreInputs</code> look like in the console?  An array!  Does it have a length? Yes!
+            We can loop it!
+        </div>
+
+        <div class="point">
+            In order to find out which option from a radio group was selected, we need to look at the <code>checked</code>
+            property of each radio.
+            <div class="excercise">
+                Try it: Loop the genreInputs and find which element is checked, by looking for for the <code>checked</code>
+                property on each element.
+            </div>
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        var genre;
+
+        for (var i = 0; i < genreInputs.length; i++) {
+        var genreInput = genreInputs[i];
+        if (genreInput.checked) {
+        genre = genreInput.value;
+        }
+        }
+
+        console.log(genre);
+    </code>
+</pre>
+
+        <div class="point">
+            The loop above will interrogate each radio element and see if it's checked.  If it is, it sets
+            the genre variable equal to the current radio elements value.
+        </div>
+
+        <div class="point">
+            One important thing to remember is that radio elements are only meant to return one value.
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <h2 class="text-right">Event Delegation</h2>
+    </div>
+    <div class="col-md-9">
+
+        <div class="point">
+            As we've seen so far, all of our event handlers are attached directly to the element they work with.
+            We attached click handlers on our li tags to alert a movie title, etc...  When this happens 1 copy
+            of the function is created and stored for every event listener.  Imagine if we had an html list with
+            500 items in it.  If we wanted to register a callback for every one of the li tags, that would
+            store 500 copies of a callback function in memory!  There is a better way!
+        </div>
+
+        <h3>Event Bubbling</h3>
+
+        <div class="point">
+            In order to leverage a better way of watching using event listeners, we have to first understand
+            how events in a browser work.
+        </div>
+
+        <div class="point">
+            The idea of <code>event bubbling</code> simply means that an event bubbles up the dom tree, triggering
+            the given event <strong>on every node</strong> up the dom tree.
+        </div>
+
+        <div class="point">
+            So if I click on a button, the click event starts at the button, then moves to it's parent, then
+            to that elements parent and so on, until it reaches the top of the document.
+        </div>
+
+        <div class="point">
+            Lets create an example that uses event bubbling and it should become more clear how we might be
+            able to use this.  Start with a ul that has 5 li's in it.
+        </div>
+
+<pre>
+    <code class="language-markup">
+        &lt;ul id="myul"&gt;
+        &lt;li&gt;foo&lt;/li&gt;
+        &lt;li&gt;bar&lt;/li&gt;
+        &lt;li&gt;baz&lt;/li&gt;
+        &lt;li&gt;bleep&lt;/li&gt;
+        &lt;li&gt;bloop&lt;/li&gt;
+        &lt;/ul&gt;
+    </code>
+</pre>
+
+        <div class="point">
+            Now I want to be able to click on any li and alert the text of that node.  But instead of attaching
+            an event listener to every li, I'll just do it on the ul.  When we click on a li, the event will
+            bubble up to it's parent (the UL) and the click event handler we'll set up will fire.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        document.getElementById("myul").addEventListener("click", function (evt) {
+        console.log(this);
+        console.log(evt);
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            Ok, so what is the <code>this</code> context in our callback?  It's the ul right?  So how can we
+            know which li was actually clicked on that caused the click event that bubbled to the ul?
+        </div>
+
+        <div class="point">
+            Lets take a closer look at the <code>evt</code> object that the event handler received.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        document.getElementById("myul").addEventListener("click", function (evt) {
+        console.log(evt);
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            If we look closely, you'll see there is a property there called <code>target</code>. This
+            property on the event object will contain the node we actually clicked on.
+        </div>
+
+        <div class="point">
+            So now lets use this new <code>evt.target</code> property to get the <code>textContent</code> of
+            the li we clicked on and alert that.
+        </div>
+
+<pre>
+    <code class="language-javascript">
+        document.getElementById("myul").addEventListener("click", function (evt) {
+        alert(evt.target.textContent);
+        });
+    </code>
+</pre>
+
+        <div class="point">
+            So now we only have 1 event handler for click events, which through the <code>evt</code> object
+            we can determine which thing was actually clicked on, and do something with that.
+        </div>
+
+        <div class="point">
+            Event delegation can single handedly reduce memory consumption of your app by great amounts if
+            used properly.
+        </div>
+
+    </div>
+</div>
 <div class="row">
     <div class="col-md-3">
         <h2 class="text-right">Array Sorting</h2>
