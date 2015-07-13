@@ -42,60 +42,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <h2 class="text-right">Review Take Home</h2>
-        </div>
-        <div class="col-md-9">
-<pre>
-    <code class="language-javascript">
-function Bank(balance) {
-    balance = parseInt(balance, 10);
-    balance = isNaN(balance) ? 100 : balance;
-    this.balance = balance;
-}
-
-Bank.prototype = {
-    credit: function (credit) {
-        credit = parseInt(credit, 10);
-
-        if (isNaN(credit)) {
-            return;
-        }
-
-        this.balance += credit;
-    },
-    debit: function (debit) {
-        debit = parseInt(debit, 10);
-
-        if (isNaN(debit)) {
-            return;
-        }
-
-        this.balance -= debit;
-    }
-};
-
-var EECU = new Bank();
-
-for (var i = 0; i < 3; i++) {
-    var credit = prompt("Enter an amount to credit your account");
-
-    EECU.credit(credit);
-}
-
-for (var i = 0; i < 2; i++) {
-    var debit = prompt("Enter an amount to debit your account");
-
-    EECU.debit(debit);
-}
-
-console.log(EECU.balance);
-    </code>
-</pre>
-        </div>
-    </div>
-
 
     <div class="row">
         <div class="col-md-3">
@@ -103,28 +49,18 @@ console.log(EECU.balance);
         </div>
         <div class="col-md-9">
             <div class="point">
-                Refactor the take home so that:
-
                 <ul class="list">
                     <li>
-                        Create a new function called <code>doDebitCredit</code> that has a signature
-                        <code>doDebitCredit(numLoops, action, desc)</code>
+                        Create a new function called <code></code> that has a signature
+                        <code>()</code>
                     </li>
                     <li>
-                        The <code>doDebitCredit</code> function should create a loop that will run the specified number
-                        of times <code>numLoops</code>, prompt the user with the given <code>desc</code>for a number,
-                        and then run the specified <code>action"</code> (HINT: remember functions are first class
-                        citizens in javascript, so you can pass them into other functions).
+
                     </li>
                     <li>
-                        Finally, log the final balance and ensure it's the proper amount.
+
                     </li>
                 </ul>
-            </div>
-
-            <div class="point">
-                What issues did you run into?  What did the results of the console.log yield?  How can you explain the
-                results?  How can you fix the issues?
             </div>
         </div>
     </div>
@@ -367,57 +303,6 @@ function alertName() {
 alertName();
     </code>
 </pre>
-        <div class="col-md-3">
-            <h2 class="text-right">for / in loop</h2>
-        </div>
-        <div class="col-md-9">
-            <div class="point">
-                The <code>for / in</code> loop is a nice way of looping over an objects keys.  It looks like this:
-            </div>
-
-<pre>
-    <code class="language-javascript">
-var obj = {
-    name: "greg",
-    age: 35
-};
-
-for (var key in obj) {
-    console.log(key);
-    console.log(obj[key]);
-}
-    </code>
-</pre>
-
-            <div class="point">
-                One gotcha here...remember we discussed prototype as a way of inheriting properties?  Well, the <code>for / in</code>
-                loop will also loop over those properties if they exist in the object.  For this reason, it's good practice
-                to add a check to make sure that the <code>key</code> we are working with only exists on the actual object
-                and not part of some other prototype.
-            </div>
-
-<pre>
-    <code class="language-javascript">
-
-var obj = {
-    name: "greg",
-    age: 35
-};
-
-for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-        console.log(key);
-        console.log(obj[key]);
-    }
-}
-    </code>
-</pre>
-
-            <div class="point">
-                This will now ONLY operate on a key that actually exists in the <code>obj</code>.
-            </div>
-        </div>
-    </div>
 
 
     <div class="row">
